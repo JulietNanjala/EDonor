@@ -23,7 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-%pym(=%dfiv$ik0_!l*lc9$0u@j4=^02kys05@(*66bbsqkn%_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
+
+# Ensure that all HTTP requests are redirected to HTTPS
+SECURE_SSL_REDIRECT = True
 
 ALLOWED_HOSTS = []
 
@@ -127,6 +130,17 @@ STATIC_URL = '/static/'
 # App-level static files
 APP_STATIC_ROOT = os.path.join(BASE_DIR, 'donor/static')
 STATICFILES_DIRS = [APP_STATIC_ROOT]
+
+#static files at the project level
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+
+#static files url
+STATIC_URL = '/static/'
+
+#additional locations for static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'donor/static'),
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
